@@ -1,5 +1,6 @@
 package com.example.capitalauditbackend.Utilities;
 import com.example.capitalauditbackend.DOA.DatabaseConnector;
+import com.example.capitalauditbackend.model.user;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
@@ -39,7 +40,6 @@ public class Authentication {
 
     public static boolean tokenAuthenticator(Claims claim)
     {
-
         Date now = new Date();
         if (claim == null)
         {
@@ -49,12 +49,26 @@ public class Authentication {
         if(checkExpired(claim))
         {
             DatabaseConnector db = new DatabaseConnector();
-            return db.checkUsername(username);
+             if(db.checkUsername(username))
+             {
+                 user.setUsername(username);
+                 int id = db.getUserId(username);
+                 if(id != 0){
+                    user.setUser_id(id);
+                 }
+                 else
+                 {
+                     return false;
+                 }
+
+                 return true;
+             }
         }
         else
         {
             return false;
         }
+        return false;
     }
 
     private static boolean checkExpired(Claims claim)
