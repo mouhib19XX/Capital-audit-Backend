@@ -1,5 +1,9 @@
 package com.example.capitalauditbackend.DOA;
+import com.example.capitalauditbackend.model.PaymentData;
+
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class DatabaseConnector {
 
@@ -66,6 +70,39 @@ public class DatabaseConnector {
             // Handle exceptions
             e.printStackTrace();
             return false;
+        }
+    }
+
+    public List<PaymentData> getPaymentData(int user_id)
+    {
+        String query = "SELECT * FROM transactions WHERE user_id = ?;";
+        try (Connection connection = getConnection();
+             PreparedStatement statement = connection.prepareStatement(query)) {
+
+            // Bind parameters
+            statement.setInt(1, user_id);
+
+            // Execute query
+            try (ResultSet resultSet = statement.executeQuery()) {
+                List<PaymentData> paymentDataList= new ArrayList<>();
+                while (resultSet.next()) {
+                    PaymentData paymentData = new PaymentData();
+                    paymentData.setID(resultSet.getInt("ID"));
+                    paymentData.setPrice(resultSet.getInt("price"));
+                    paymentData.setCategory(resultSet.getString("category"));
+                    paymentData.setDebit_credit(resultSet.getBoolean("debit_credit"));
+                    paymentData.setCleared(resultSet.getBoolean("cleared"));
+                    paymentData.setDate(resultSet.getString("date"));
+                    paymentData.setID(resultSet.getInt("user_id"));
+                    paymentDataList.add(paymentData);
+
+                }
+                return paymentDataList;
+            }
+        } catch (SQLException e) {
+            // Handle exceptions
+            e.printStackTrace();
+            return null;
         }
     }
 
