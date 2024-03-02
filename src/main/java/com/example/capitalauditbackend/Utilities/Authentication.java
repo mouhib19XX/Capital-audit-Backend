@@ -71,7 +71,7 @@ public class Authentication {
         return false;
     }
 
-    private static boolean checkExpired(Claims claim)
+    public static boolean checkExpired(Claims claim)
     {
         Date expirationDate = claim.getExpiration();
         Date currentDate = new Date();
