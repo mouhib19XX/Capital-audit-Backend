@@ -2,7 +2,6 @@ package com.example.capitalauditbackend;
 
 import com.example.capitalauditbackend.Utilities.Authentication;
 import io.jsonwebtoken.Claims;
-import io.jsonwebtoken.Jws;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.impl.DefaultClaims;
 import io.jsonwebtoken.security.Keys;
@@ -15,12 +14,10 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import java.util.Random;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
-class CapitalAuditBackendApplicationTests {
+class AuthenticationTests {
     private static final Key SECRET_KEY = Keys.secretKeyFor(SignatureAlgorithm.HS512);
     private List<String> tokenList;
     private static final String[] usernames = {"Alice", "Bob", "Charlie", "David", "Eva", "Frank", "Grace", "Henry", "Ivy", "Jack"};

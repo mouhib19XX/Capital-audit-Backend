@@ -4,7 +4,7 @@ import com.example.capitalauditbackend.DOA.DatabaseConnector;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import javax.xml.crypto.Data;
+
 
 @SpringBootTest
 public class DatabaseConnectorTests {
@@ -18,4 +18,41 @@ public class DatabaseConnectorTests {
             db.connect();
         }
     }
+
+    @Test
+    void ExecuteLoginQueryTest()
+    {
+
+    }
+
+    @Test
+    void GetQueryTest()
+    {
+
+    }
+
+    @Test
+    void DeleteQueryTest()
+    {
+
+    }
+
+    @Test
+    void PostQueryTest()
+    {
+
+    }
+
+    @Test
+    void checkUsernameTest()
+    {
+
+    }
+
+    @Test
+    void getUserIDTest()
+    {
+
+    }
+
 }

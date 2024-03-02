@@ -15,7 +15,7 @@ public class PostPaymentDataController {
     private final Gson gson = new Gson();
 
     @PostMapping("/postPaymentData")
-    public ResponseEntity<String> login(@RequestBody String jsonString) {
+    public ResponseEntity<String> postPayment(@RequestBody String jsonString) {
         return postPaymentHandler(jsonString);
     }
     private ResponseEntity<String> postPaymentHandler(String jsonString)
