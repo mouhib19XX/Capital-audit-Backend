@@ -32,10 +32,9 @@ public class GetPaymentDataController {
         {
             DatabaseConnector db = new DatabaseConnector();
             int user_id = user.getUser_id();
-            List<PaymentData> paymentDataList = new ArrayList<>();
             try
             {
-                paymentDataList = db.getPaymentData(user_id);
+                List<PaymentData> paymentDataList = new ArrayList<>();
                 paymentDataList = db.getPaymentData(user_id);
                 return response(0, "Success.", paymentDataList);
             }
@@ -47,7 +46,6 @@ public class GetPaymentDataController {
         }
         else
         {
-            int result = 1;
             return response(1, "Authentication failed. Try to sign in again.", null);
         }
     }

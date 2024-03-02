@@ -41,7 +41,6 @@ public class DatabaseConnector {
             }
         } catch (SQLException e) {
             // Handle exceptions
-            e.printStackTrace();
             return false;
         }
     }
@@ -65,10 +64,11 @@ public class DatabaseConnector {
             try (ResultSet resultSet = statement.executeQuery()) {
                 int rowsInserted = statement.executeUpdate();
                 return rowsInserted > 0;
+            } catch(Exception e) {
+                return false;
             }
         } catch (SQLException e) {
             // Handle exceptions
-            e.printStackTrace();
             return false;
         }
     }
@@ -101,7 +101,6 @@ public class DatabaseConnector {
             }
         } catch (SQLException e) {
             // Handle exceptions
-            e.printStackTrace();
             return null;
         }
     }
@@ -121,7 +120,6 @@ public class DatabaseConnector {
             }
         } catch (SQLException e) {
             // Handle exceptions
-            e.printStackTrace();
             return false;
         }
     }
@@ -144,7 +142,6 @@ public class DatabaseConnector {
             }
         } catch (SQLException e) {
             // Handle exceptions
-            e.printStackTrace();
             return 1;
         }
         return 1;

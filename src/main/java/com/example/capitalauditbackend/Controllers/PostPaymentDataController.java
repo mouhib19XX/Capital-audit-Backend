@@ -11,8 +11,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
-import javax.xml.crypto.Data;
-
 public class PostPaymentDataController {
     private final Gson gson = new Gson();
 
@@ -46,7 +44,6 @@ public class PostPaymentDataController {
         }
         else
         {
-            int result = 1;
             return response(1, "Authentication failed. Try to sign in again.");
         }
         return response(1, "Error with backend");

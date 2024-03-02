@@ -10,9 +10,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-
-import java.sql.Connection;
-
 @RestController
 public class LoginController {
 
@@ -23,7 +20,6 @@ public class LoginController {
         JsonObject jsonObject = gson.fromJson(jsonString, JsonObject.class);
         String username = jsonObject.get("username").getAsString();
         String password = jsonObject.get("password").getAsString();
-        DatabaseConnector db = new DatabaseConnector();
         int result = loginHandler(username, password);
 
         return response(result, username);
@@ -31,7 +27,6 @@ public class LoginController {
     private static int loginHandler(String username, String password)
     {
         DatabaseConnector db = new DatabaseConnector();
-        Connection connection = db.getConnection();
         boolean successfulQuery = db.ExecuteLoginQuery(username, password);
 
         if (successfulQuery)
