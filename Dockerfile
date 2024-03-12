@@ -5,7 +5,7 @@ FROM openjdk:17-jdk-alpine
 WORKDIR /Capital-audit-Backend
 
 
-COPY /Capital-audit-Backend/build/libs/*.jar app.jar
+COPY /Capital-audit-Backend/build/libs/*.jar CapitalAuditBackend-0.0.1-SNAPSHOT-plain.jar
 
 
 EXPOSE 8090
