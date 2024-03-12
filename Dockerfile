@@ -1,14 +1,14 @@
 
-FROM openjdk:17-jdk-alpine
+# Use the official Tomcat image as the base image
+FROM tomcat:latest
 
+# Set the working directory inside the Tomcat container
+WORKDIR /usr/local/tomcat/webapps
 
-WORKDIR /Capital-audit-Backend
+# Copy the WAR file built by your Gradle project to the webapps directory of Tomcat
+COPY /Capital-audit-Backend/build/libs/*.war .
 
+# Expose port 8080, which is the default port used by Tomcat
+EXPOSE 8080
 
-COPY /Capital-audit-Backend/build/libs/*.jar /Capital-audit-Backend/CapitalAuditBackend-0.0.1-SNAPSHOT-plain.jar
-
-
-EXPOSE 8090
-
-
-CMD ["java", "-jar", "CapitalAuditBackend-0.0.1-SNAPSHOT-plain.jar"]
+# Tomcat automatically runs when the container starts, so no need for a CMD directive
