@@ -6,7 +6,7 @@ FROM tomcat:latest
 WORKDIR /usr/local/tomcat/webapps
 
 # Copy the WAR file built by your Gradle project to the webapps directory of Tomcat
-COPY /Capital-audit-Backend/build/libs/*.war .
+COPY /Capital-audit-Backend/build/libs/*.jar .
 
 # Expose port 8080, which is the default port used by Tomcat
 EXPOSE 8080
