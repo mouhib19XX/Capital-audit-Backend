@@ -3,7 +3,7 @@ plugins {
     id 'org.springframework.boot' version '3.2.3'
     id 'io.spring.dependency-management' version '1.1.4'
     id 'org.sonarqube' version '4.0.0.2929' // Apply SonarQube plugin
-    id 'com.jfrog.artifactory' version '4.24.4'
+    id("com.jfrog.artifactory") version "5.2.0"
 }
 
 group = 'com.example'
@@ -61,17 +61,17 @@ artifactory {
     contextUrl = 'http://localhost:8082/artifactory'
     publish {
         repository {
-            repoKey = 'your-repo-key' // Specify your repository key
-            username = 'your-username' // Specify your Artifactory username
-            password = 'your-password' // Specify your Artifactory password
+            repoKey = 'Admin'  
+            username = 'admin'
+            password = 'Admin123' 
             maven = true
         }
     }
     resolve {
         repository {
-            repoKey = 'your-repo-key' // Specify your repository key
-            username = 'your-username' // Specify your Artifactory username
-            password = 'your-password' // Specify your Artifactory password
+            repoKey = 'Admin' 
+            username = 'admin' 
+            password = 'Admin123' 
             maven = true
         }
     }
