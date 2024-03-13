@@ -64,7 +64,6 @@ artifactory {
             repoKey = 'Admin'  
             username = 'admin'
             password = 'Admin123' 
-            maven = true
         }
     }
     resolve {
@@ -72,7 +71,6 @@ artifactory {
             repoKey = 'Admin' 
             username = 'admin' 
             password = 'Admin123' 
-            maven = true
         }
     }
 }
