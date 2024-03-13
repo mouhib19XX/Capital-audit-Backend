@@ -56,22 +56,19 @@ sonarqube {
         property 'sonar.jacoco.reportPaths', 'build/jacoco/test.exec'
     }
 }
-// Artifactory configuration
 artifactory {
-    contextUrl = 'http://localhost:8082/artifactory'
-    publish {
-        repository {
-            repoKey = 'Admin'  
-            username = 'admin'
-            password = 'Admin123' 
-        }
+  contextUrl = 'http://localhost:8082/artifactory'   //The base Artifactory URL if not overridden by the publisher/resolver
+  publish {
+    contextUrl = 'http://localhost:8082/artifactory' // <- this is the fix
+    repository {
+      repoKey = 'Admin'   //The Artifactory repository key to publish to
+      username = 'admin'          //The publisher user name
+      password = 'Admin123'
+    } 
+  }
+  resolve {
+    repository {
+      repoKey = 'Admin'  //The Artifactory (preferably virtual) repository key to resolve from
     }
-    resolve {
-        repository {
-            repoKey = 'Admin' 
-            username = 'admin' 
-            password = 'Admin123' 
-        }
-    }
+  }
 }
-
