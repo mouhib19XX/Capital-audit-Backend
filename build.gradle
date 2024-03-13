@@ -14,10 +14,7 @@ java {
 
 repositories {
 
-    maven {
-        url "http://127.0.0.1:8082/ui/admin/repositories/local/Admin"
-        allowInsecureProtocol = true
-    }
+    mavenCentral()
 }
 
     
