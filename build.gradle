@@ -22,6 +22,7 @@ repositories {
             username = 'admin'
             password = 'Admin123'
         }
+          allowInsecureProtocol = true
     }
 }
 
