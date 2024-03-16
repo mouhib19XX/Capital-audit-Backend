@@ -16,6 +16,13 @@ java {
 repositories {
 
     mavenCentral()
+      maven {
+        url 'http://localhost:8082/artifactory/Admin' // The Artifactory repository URL for resolving dependencies
+        credentials {
+            username = 'admin'
+            password = 'Admin123'
+        }
+    }
 }
 
     
@@ -56,19 +63,4 @@ sonarqube {
         property 'sonar.jacoco.reportPaths', 'build/jacoco/test.exec'
     }
 }
-artifactory {
-  contextUrl = 'http://localhost:8082/artifactory'   //The base Artifactory URL if not overridden by the publisher/resolver
-  publish {
-    contextUrl = 'http://localhost:8082/artifactory' // <- this is the fix
-    repository {
-      repoKey = 'Admin'   //The Artifactory repository key to publish to
-      username = 'admin'          //The publisher user name
-      password = 'Admin123'
-    } 
-  }
-  resolve {
-    repository {
-      repoKey = 'Admin'  //The Artifactory (preferably virtual) repository key to resolve from
-    }
-  }
-}
+
