@@ -3,6 +3,7 @@ plugins {
     id 'org.springframework.boot' version '3.2.3'
     id 'io.spring.dependency-management' version '1.1.4'
     id 'org.sonarqube' version '4.0.0.2929' // Apply SonarQube plugin
+    id("com.jfrog.artifactory") version "5.+"
   
 }
 
@@ -14,16 +15,17 @@ java {
 }
 
 repositories {
-    maven {
-        url "http://127.0.0.1:8082/artifactory/Admin/"
-        credentials {
-            username = 'admin'
-            password = 'Admin123'
+        maven {
+            url "http://127.0.0.1:8082/artifactory/libs-release/"
         }
-        allowInsecureProtocol = true
     }
 }
 
+version = currentVersion
+
+apply plugin: 'com.jfrog.artifactory'
+apply plugin: 'java'
+apply plugin: 'maven-publish'
     
 
 
@@ -46,7 +48,13 @@ dependencies {
 
 
 }
-
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            from components.java
+        }
+    }
+}
 tasks.named('test') {
     useJUnitPlatform()
 }
@@ -62,4 +70,24 @@ sonarqube {
         property 'sonar.jacoco.reportPaths', 'build/jacoco/test.exec'
     }
 }
-
+artifactory {
+    contextUrl = 'http://127.0.0.1:8082/artifactory'
+    publish {
+        repository {
+            repoKey = 'libs-snapshot-local' // The Artifactory repository key to publish to
+            username = "${admin}" // The publisher user name
+            password = "${Admin123}" // The publisher password
+        }
+        defaults {
+            // Reference to Gradle publications defined in the build script.
+            // This is how we tell the Artifactory Plugin which artifacts should be
+            // published to Artifactory.
+            publications('mavenJava')
+            publishArtifacts = true
+            // Properties to be attached to the published artifacts.
+            properties = ['qa.level': 'basic', 'dev.team' : 'core']
+            // Publish generated POM files to Artifactory (true by default)
+            publishPom = true
+        }
+    }
+}
