@@ -18,6 +18,8 @@ repositories {
         mavenCentral()
         maven {
             url "http://127.0.0.1:8082/artifactory/libs-release-local/"
+            allowInsecureProtocol = true
+            
         }
     }
 
