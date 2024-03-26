@@ -1,10 +1,17 @@
+// Define repositories first
+repositories {
+    mavenCentral()
+    maven {
+        url "http://127.0.0.1:8082/artifactory/libs-release-local/"
+    }
+}
+
+// Apply plugins after repository declarations
 plugins {
     id 'java'
-    id 'org.springframework.boot' version '3.2.3'
+    id 'org.springframework.boot' version '<latest-version>' // Update with the latest version
     id 'io.spring.dependency-management' version '1.1.4'
     id 'org.sonarqube' version '4.0.0.2929' // Apply SonarQube plugin
-   
-  
 }
 
 group = 'com.example'
@@ -13,21 +20,6 @@ version = '0.0.1-SNAPSHOT'
 java {
     sourceCompatibility = '17'
 }
-
-repositories {
-        mavenCentral()
-        maven {
-            url "http://127.0.0.1:8082/artifactory/libs-release-local/"
-            allowInsecureProtocol = true
-            
-        }
-    }
-
-
-apply plugin: 'java'
-apply plugin: 'maven-publish'
-    
-
 
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
@@ -44,10 +36,8 @@ dependencies {
     testImplementation(platform('org.junit:junit-bom:5.10.2'))
     testImplementation('org.junit.jupiter:junit-jupiter')
     testRuntimeOnly('org.junit.platform:junit-platform-launcher')
-    
-
-
 }
+
 publishing {
     publications {
         mavenJava(MavenPublication) {
@@ -55,6 +45,7 @@ publishing {
         }
     }
 }
+
 tasks.named('test') {
     useJUnitPlatform()
 }
@@ -70,4 +61,3 @@ sonarqube {
         property 'sonar.jacoco.reportPaths', 'build/jacoco/test.exec'
     }
 }
-
