@@ -16,6 +16,9 @@ java {
 repositories {
     maven {
         url 'http://localhost:8082/artifactory/Admin'
+        credentials {
+            username = 'admin'
+            password = 'Admin123'
         allowInsecureProtocol = true
     }
 }
