@@ -15,7 +15,7 @@ java {
 
 repositories {
     maven {
-        url '127.0.0.1:8082/ui/admin/repositories/local'
+        url 'http://localhost:8082/artifactory'
         credentials {
             username = 'admin'
             password = 'Admin123'
