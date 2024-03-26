@@ -73,8 +73,8 @@ artifactory {
     publish {
         repository {
             repoKey = 'libs-snapshot-local' // The Artifactory repository key to publish to
-            username = "${admin}" // The publisher user name
-            password = "${Admin123}" // The publisher password
+            username = "admin" // The publisher user name
+            password = "Admin123" // The publisher password
         }
         defaults {
             // Reference to Gradle publications defined in the build script.
