@@ -17,11 +17,7 @@ repositories {
 
     mavenCentral()
       maven {
-        url 'http://localhost:8082/artifactory/Admin' // The Artifactory repository URL for resolving dependencies
-        credentials {
-            username = 'admin'
-            password = 'Admin123'
-        }
+        url "http://localhost:8082/artifactory/Admin"
           allowInsecureProtocol = true
     }
 }
