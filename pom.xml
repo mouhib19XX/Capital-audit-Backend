@@ -15,10 +15,8 @@
            
    
     <sonar.host.url>http://your-sonarqube-server-url:9000</sonar.host.url>
-    <sonar.login>your-sonarqube-login-token</sonar.login> <!-- If authentication is required -->
     <sonar.projectKey>your-project-key</sonar.projectKey>
     <sonar.projectName>your-project-name</sonar.projectName>
-    
     <sonar.sources>src/main/java/com/example/capitalauditbackend</sonar.sources>
     <sonar.tests>src/test/java/com/example/capitalauditbackend</sonar.tests>
     <sonar.java.binaries>build/classes/java/main</sonar.java.binaries>
