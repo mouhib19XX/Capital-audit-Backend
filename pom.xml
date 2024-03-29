@@ -12,6 +12,21 @@
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+           
+   
+    <sonar.host.url>http://your-sonarqube-server-url:9000</sonar.host.url>
+    <sonar.login>your-sonarqube-login-token</sonar.login> <!-- If authentication is required -->
+    <sonar.projectKey>your-project-key</sonar.projectKey>
+    <sonar.projectName>your-project-name</sonar.projectName>
+    
+    <sonar.sources>src/main/java/com/example/capitalauditbackend</sonar.sources>
+    <sonar.tests>src/test/java/com/example/capitalauditbackend</sonar.tests>
+    <sonar.java.binaries>build/classes/java/main</sonar.java.binaries>
+    <sonar.java.test.binaries>build/classes/java/test</sonar.java.test.binaries>
+    <sonar.junit.reportPaths>build/test-results/test</sonar.junit.reportPaths>
+    <sonar.jacoco.reportPaths>build/jacoco/test.exec</sonar.jacoco.reportPaths>
+
+
     </properties>
 
     <dependencies>
@@ -105,7 +120,12 @@
                     <target>${maven.compiler.target}</target>
                 </configuration>
             </plugin>
-            <!-- Spring Boot Maven Plugin -->
+                  <plugin>
+            <groupId>org.sonarsource.scanner.maven</groupId>
+            <artifactId>sonar-maven-plugin</artifactId>
+            <version>4.0.0.2929</version> <!-- Use the appropriate version -->
+        </plugin>
+           
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
